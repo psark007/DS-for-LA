@@ -101,7 +101,7 @@ If the system $\tilde{X}\tilde{\beta} = y$ is consistent, then we can find a sol
 
 $$ e = y - \tilde{X}\tilde{\beta} $$
 
-is small. By small, we often mean that $e$ is small in $L^2$ norm; i.e., we are minimizing the the sums of the squares of the differences between the components of $y$ and the componenets of $\tilde{X}\tilde{\beta}$. This is known as a **least squares solution**. Assuming that our data points live in the Euclidean plane, this precisely describes finding a line of best fit.
+is small. By small, we often mean that $e$ is small in $L^2$ norm; i.e., we are minimizing the the sums of the squares of the differences between the components of $y$ and the components of $\tilde{X}\tilde{\beta}$. This is known as a **least squares solution**. Assuming that our data points live in the Euclidean plane, this precisely describes finding a line of best fit.
 ![line_of_best_fit_generated1.png](./figures/line_of_best_fit_generated1.png)
 
 The structure of this sections is as follows.
@@ -228,7 +228,7 @@ Now  going to our initial example.
 > which is our target on the nose. This means that we can expect, based on our data, that the cost of a house will be
 > $$ \frac{200}{9} + \frac{5}{18}(\text{square footage}) + \frac{100}{9}(\text{\# of bedrooms})$$
 
-In the above, we actually had a consistent system to begin with, so our least-squares solution gave our prediction honestly. What happenes if we have an inconsistent system?
+In the above, we actually had a consistent system to begin with, so our least-squares solution gave our prediction honestly. What happens if we have an inconsistent system?
 
 > **Example**: Let us add two more observations, say our data is now the following. 
 > |House | Square ft | Bedrooms | Price (in $1000s) |
@@ -391,7 +391,7 @@ In the literature, sometimes the QR decomposition is phrased as follows: any $m 
 
 $$ A = Q_1R_1  = \begin{bmatrix} Q_1 & Q_2 \end{bmatrix}\begin{bmatrix} R_1 \\ 0 \end{bmatrix}.  $$
 
-The left matrix is an $m \times m$ orthogonal matrix and the right matrix is $m \times n$ upper triangular. Moreover, the decomposition provides orthonormal bases for both the column space of $A$ and the perp of the column space of $A$; $Q_1$ will consist of an orthonormal basis for the column space of $A$ and $Q_2$ will consist fof an orthonormal basis for the perp of the column space of $A$. 
+The left matrix is an $m \times m$ orthogonal matrix and the right matrix is $m \times n$ upper triangular. Moreover, the decomposition provides orthonormal bases for both the column space of $A$ and the perp of the column space of $A$; $Q_1$ will consist of an orthonormal basis for the column space of $A$ and $Q_2$ will consist of an orthonormal basis for the perp of the column space of $A$. 
 
 However, we will often want to use the decomposition when $Q$ is $m \times n$, $R$ is $n \times n$, and the columns of $Q$ form an orthonormal basis for the column space of $A$. For example, the python function `numpy.linalg.qr` give QR decompositions this way (again, assuming that the columns of $A$ are linearly independent, so $m \geq n$).
 
@@ -406,7 +406,7 @@ $$ Q^TA = Q^T(QR) = IR = R. $$
 
 > **Example**. Find a QR decomposition for the matrix
 >  $$ A = \begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \\ 0 & 0  & 0 \end{bmatrix}. $$
-> Note that one trivially see (or by applying the Gram-Schmidt procedue) that
+> Note that one trivially see (or by applying the Gram-Schmidt procedure) that
 > $$ \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix} $$
 > forms an orthonormal basis for the column space of $A$. So with
 > $$ Q = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \text{ and }R = \begin{bmatrix} 1 & 1 & 1\\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix}, $$
@@ -417,7 +417,7 @@ Let's do a more involved example.
 > $$ A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}. $$
 > One can apply the Gram-Schmidt procedure to the columns of $A$ to find that
 > $$ \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} -3 \\ 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 \\ -\frac{2}{3} \\ \frac{1}{3} \\ \frac{1}{3}\end{bmatrix} $$
-> forms an orthogonal basis for the colunn space of $A$. Normalizing, we get that
+> forms an orthogonal basis for the column space of $A$. Normalizing, we get that
 > $$ Q = \begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix} $$
 > is an appropriate $Q$. Thus
 > $$ \begin{split} R = Q^TA &= \begin{bmatrix} \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\ -\frac{3}{\sqrt{12}} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{12}} \\ 0 & -\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}} \end{bmatrix}\begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix} \\ &= \begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}. \end{split} $$
@@ -460,9 +460,9 @@ array([[-2.        , -1.5       , -1.        ],
 
 ### How to use QR decompositions
 
-One of the primary uses of QR decompositions is to solve least squares problems, as introduced above. Assuming that $A$ has full column rank, we can write $A = QR$ as a QR decomposition, and then we can find a least-squares solution to $Ax = b$ by solving the upper-triangualr system.
+One of the primary uses of QR decompositions is to solve least squares problems, as introduced above. Assuming that $A$ has full column rank, we can write $A = QR$ as a QR decomposition, and then we can find a least-squares solution to $Ax = b$ by solving the upper-triangular system.
 
-> **Theorem**. Let $A$ be an $m \times n$ matrix with full column rank, and let $A = QR$ be a QR factorizzation of $A$. Then, for each $b \in \mathbb{R}^m$, the equation $Ax = b$ has a unique least-squares solution, arising from the system
+> **Theorem**. Let $A$ be an $m \times n$ matrix with full column rank, and let $A = QR$ be a QR factorization of $A$. Then, for each $b \in \mathbb{R}^m$, the equation $Ax = b$ has a unique least-squares solution, arising from the system
 > $$ Rx = Q^Tb. $$
 
 Normal equations can be *ill-conditioned*, i.e., small errors in calculating $A^TA$ give large errors when trying to solve the least-squares problem. When $A$ has full column rank, a QR factorization will allow one to compute a solution to the least-squares problem more reliably. 
@@ -596,7 +596,7 @@ array([[1.00000000e+00, 2.89687929e-17, 2.89687929e-17, 2.89687929e-17],
        [2.89687929e-17, 7.07349921e-17, 5.00000000e-01, 5.00000000e-01]])
 
 ```
-As we can see, the two off-diagonal blocks are all tiny, hence we treat them as zero. Note that if they were not actually zero, then this wouldn't actually be a projection. This can cause some problems. So let's fix this by introducting some tolerances. 
+As we can see, the two off-diagonal blocks are all tiny, hence we treat them as zero. Note that if they were not actually zero, then this wouldn't actually be a projection. This can cause some problems. So let's fix this by introducing some tolerances. 
 
 Let's write a function to implement this, assuming that columns of A are linearly independent. 
 
@@ -604,7 +604,7 @@ Let's write a function to implement this, assuming that columns of A are linearl
 import numpy as np
 
 def proj_onto_col_space(A):
-	# Take the QR decomosition
+	# Take the QR decomposition
 	Q,R = np.linalg.qr(A)
 	# The projection is just Q @ Q.T
 	P = Q @ Q.T
@@ -628,9 +628,9 @@ The SVD is a very important matrix decomposition in both data science and linear
 > $$ X = U\Sigma V^T. $$
 > - The columns of $U$ are left **left singular vectors**.
 > - The columns of $V$ are the **right singular vectors**.
-> - $\Sigma$ has **singular values** $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0$ on its digonal, where $r$ is the rank of $X$.
+> - $\Sigma$ has **singular values** $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0$ on its diagonal, where $r$ is the rank of $X$.
 
-> **Remark**. The SVD is clearly a generalizeation of matrix diagonalization, but it also generalizes the **polar decomposition** of a matrix. Recall that every $n \times n$ matrix $A$ can be written as $A = UP$ where $U$ is orthogonal (or unitary) and $P$ is a positive matrix. This is because if
+> **Remark**. The SVD is clearly a generalization of matrix diagonalization, but it also generalizes the **polar decomposition** of a matrix. Recall that every $n \times n$ matrix $A$ can be written as $A = UP$ where $U$ is orthogonal (or unitary) and $P$ is a positive matrix. This is because if
 > $$ A = U_0\Sigma V^T $$
 > is the SVD for $A$, then $\Sigma$ is an $n \times n$ diagonal matrix with non-negative entries, hence any orthogonal conjugate of it is positive, and so
 > $$ A = (U_0V^T)(V\Sigma V^T). $$
@@ -741,7 +741,7 @@ The SVD can be used to determine a least-squares solution for a given system. Re
 >$$ \Sigma = \begin{bmatrix} D & 0  \\ 0 & 0 \end{bmatrix} $$
 > and note that
 > $$ A = U_rDV_r^T. $$
-> We call this the reduced singular value decomposition of $A$. Note that $D$ is invertbile, and its inverse is simply
+> We call this the reduced singular value decomposition of $A$. Note that $D$ is invertible, and its inverse is simply
 > $$ D = \begin{bmatrix} \sigma_1^{-1} \\ & \sigma_2^{-1} \\ & & \ddots \\ & & & \sigma_r^{-1} \end{bmatrix}. $$
 > The **pseudoinverse** (or **Moore-Penrose inverse**) of $A$ is the matrix
 > $$ A^+ = V_rD^{-1}U_r^T. $$
@@ -769,7 +769,7 @@ Taking pseudoinverses is quite involved. We'll do one example by hand, and then 
 > and so a least-squares solution is given by
 > $$ \begin{split} x_0 &= A^+b \\ &= \begin{bmatrix} \frac{1}{9} & -\frac{4}{9} & \frac{5}{9} & 0 \\  \frac{1}{9} & \frac{5}{9} & -\frac{4}{9} & 0 \\ \frac{2}{9} & \frac{1}{9} & \frac{1}{9} & 0\end{bmatrix}\begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix} \\ &= \begin{bmatrix} \frac{2}{9} \\ \frac{2}{9} \\ \frac{4}{9} \end{bmatrix}.  \end{split} $$
 
-Now let's do this with python, and see an example of how things can go wrong. We'l try to take the pseudoinverse manually first.
+Now let's do this with python, and see an example of how things can go wrong. We'll try to take the pseudoinverse manually first.
 
 ```python
 import numpy as np
@@ -840,7 +840,7 @@ Numerical calculations involving matrix equations are quite reliable if we use t
 > $$ \kappa(X) = \frac{\sigma_1}{\sigma_r} $$
 > of the largest and smallest non-zero singular values.
 
-A condition number close to 1 indicates a well-conditioned problem, while a large condition number indicates that small perturbations in data may lead to large changes in compution. Geometrically, $\kappa(X)$ measures how much $X$ distorts space. 
+A condition number close to 1 indicates a well-conditioned problem, while a large condition number indicates that small perturbations in data may lead to large changes in computation. Geometrically, $\kappa(X)$ measures how much $X$ distorts space. 
 
 > **Example**. Consider the matrices
 > $$ A = \begin{bmatrix} 1 \\ & 1 \end{bmatrix} \text{ and } B = \begin{bmatrix} 1 \\ & \frac{1}{10^6} \end{bmatrix}. $$
@@ -879,7 +879,7 @@ np.float64(4329.082589067693)
 so this is quite a high condition number! This should be unsurprising, as clearly the number of bedrooms is correlated to the size of a house (especially so in our small toy example). 
 ## A note on other norms
 
-There are other canonical choices of norms for vectors and matrices. While $L^2$ leads naturally to least-squares problems with closed-form solutions, other norms induce different geometries and different optimal soltuions. From the linear algebra perpsective, changing the norm afftects:
+There are other canonical choices of norms for vectors and matrices. While $L^2$ leads naturally to least-squares problems with closed-form solutions, other norms induce different geometries and different optimal solutions. From the linear algebra perspective, changing the norm affects:
 - the shape of the unit ball,
 - the geometry of approximation,
 - the numerical behaviour of optimization problems. 
@@ -894,7 +894,7 @@ Minimizing the $L^1$ norm is less sensitive to outliers. Geometrically, the $L^1
 Consequently, optimization problems involving $L^1$ tend to produce solutions which live on the corners of this polytope.
 Solutions often require linear programming or iterative reweighted least squares.
 
-$L^1$ based methods (such as LASSO) tend to set coefficients to be exatcly zero. Unlike with $L^2$, the minimization problem for $L^1$ does not admit a closed form solution. Algorithms include:
+$L^1$ based methods (such as LASSO) tend to set coefficients to be exactly zero. Unlike with $L^2$, the minimization problem for $L^1$ does not admit a closed form solution. Algorithms include:
 - linear programming formulations,
 - iterative reweighted least squares,
 - coordinate descent methods.
@@ -920,9 +920,9 @@ There are also various norms on matrices, each highlighting a different aspect o
   - low-rank approximation,
   - principal component analysis.
 
-  In particlar, the truncated SVD yields a best low-rank approximation of a matrix with respect to the Frobenius norm.
+  In particular, the truncated SVD yields a best low-rank approximation of a matrix with respect to the Frobenius norm.
 
-  We also that that the Frobenius norm can be written in terms of tracial data. We ahve that
+  We also that that the Frobenius norm can be written in terms of tracial data. We have that
   $$ \|A\|_F^2 = \text{Tr}(A^TA) = \text{Tr}(AA^T). $$
 - **Operator norm** (spectral norm). This is just the norm as an operator $A: \mathbb{R}^p \to \mathbb{R}^n$, where $\mathbb{R}^p$ and $\mathbb{R}^n$ are thought of as Hilbert spaces:
   $$ \|A\| = \max_{\|x\|_2 = 1}\|Ax\|_2. $$
@@ -995,7 +995,7 @@ Solving these problems can be done with python. One can use `numpy.polyfit` and 
 > $$ V = \begin{bmatrix} 1 & 1600 & 1600^2 & 1600^3 \\ 1 & 2100 & 2100^2 & 2100^3 \\ 1 & 1550 & 1550^2 & 1550^3 \\ 1 & 1600 & 1600^2 & 1600^3 \\ 1 & 2000 & 2000^2 & 2000^3 \end{bmatrix} $$
 > and our target vector will be
 > $$ y = \begin{bmatrix} 500 \\ 650 \\ 475 \\ 490 \\ 620 \end{bmatrix}. $$
-> As we can see, the entries of the Vandermonde matrix get very very large very fast. One can, if they are so inclinded, compute a least-squares solution to $V\tilde{\beta} = y$ by hand. Let's not, but let us find, using python, a "best" cubic approximation of the relationship between the square footage and price.
+> As we can see, the entries of the Vandermonde matrix get very very large very fast. One can, if they are so inclined, compute a least-squares solution to $V\tilde{\beta} = y$ by hand. Let's not, but let us find, using python, a "best" cubic approximation of the relationship between the square footage and price.
 
 We will use `numpy.polyfit`, `numpy.pold1d` and `numpy.linspace`.
 ```python
@@ -1036,7 +1036,7 @@ plt.show()
 
 So we get a cubic of best fit.
 
-![house_price_vs_sqft_cubic.png](./figures/house_proce_vs_sqft_cubic.png)
+![house_price_vs_sqft_cubic.png](./figures/house_price_vs_sqft_cubic.png)
 
 Here `numpy.polyfit` computes the least-squares solution in the polynomial basis $1, x, x^2, x^3$, i.e., it solves the Vandermonde least-squares problem. So what is our cubic polynomial?
 
@@ -1044,7 +1044,7 @@ Here `numpy.polyfit` computes the least-squares solution in the polynomial basis
 >>> cubic
 poly1d([ 3.08080808e-07, -1.78106061e-03,  3.71744949e+00, -2.15530303e+03])
 ```
-The first term is the degree 3 term, the second the degree 2 term, the rhird the degree 1 term, and the fourth is the constant term. 
+The first term is the degree 3 term, the second the degree 2 term, the third the degree 1 term, and the fourth is the constant term. 
 
 ## What can go wrong?
 
@@ -1052,8 +1052,8 @@ We are often dealing with imperfect data, so there is plenty that could go wrong
 
 - **Perfect multicolinearity**: non-invertible $\tilde{X}^T\tilde{X}$. This happens when one feature is a perfect combination of the others. This means that the columns of the matrix $\tilde{X}$ are linearly dependent, and so infinitely many solutions will exist to the least-squares problem. 
     - For example, if you are looking at characteristics of people and you have height in both inches and centimeters.
-- **Almost multicolinearity**: this happens when one features is **alomst** a perfect combintion of the others. From the linear algebra perspective, the columns of $\tilde{X}$ might not be dependent, but they will be be **almost** linearly dependent. This will cause problems in calculation, as the condition number will become large and amplify numerical errors. The inverse will blow up small spectral components. 
-- **More features than observations**: this means that our matrix $\tilde{X}$ will be wider than it is high. Necessarily, this means that the columns are linearly depdentent. Regularization or dimensionality reduction becomes essential.
+- **Almost multicolinearity**: this happens when one features is **almost** a perfect combination of the others. From the linear algebra perspective, the columns of $\tilde{X}$ might not be dependent, but they will be be **almost** linearly dependent. This will cause problems in calculation, as the condition number will become large and amplify numerical errors. The inverse will blow up small spectral components. 
+- **More features than observations**: this means that our matrix $\tilde{X}$ will be wider than it is high. Necessarily, this means that the columns are linearly dependent. Regularization or dimensionality reduction becomes essential.
 - **Redundant or constant features**: this is when there is a characteristic that is satisfied by each observation. In terms of the linear algebraic data, this means that one of the columns of $X$ is constant.
     - e.g., if you are looking at characteristics of penguins, and you have "# of legs". This will always be two, and doesn't add anything to the analysis.
 - **Underfitting**: the model lacks sufficient expressivity to capture the underlying structure. For example, see the section on polynomial regression -- sometimes one might want a curve vs. a straight line.
@@ -1067,7 +1067,7 @@ We are often dealing with imperfect data, so there is plenty that could go wrong
 - **Condition number**: a large condition number indicates numerical instability and sensitivity to perturbation, even when formal solutions exist.
 - **Insufficient tolerance**: in numerical algorithms, thresholds used to determine rank or invertibility must be chosen carefully. Poor choices can lead to misleading results.
 
-The point is that many failures in data science are not conceptual, but they happen geomertically and numerically. Poor choices lead to poor results. 
+The point is that many failures in data science are not conceptual, but they happen geometrically and numerically. Poor choices lead to poor results. 
 
 # Principal Component Analysis
 
@@ -1158,11 +1158,11 @@ So defining $A_r := \sum_{i=1}^r \sigma_i u_iv_i^T$, we are approximating $A$ by
 
 In what sense is this a good approximation though? Recall that the Frobenius norm of a matrix $A$ is defined as the sqrt root of the sum of the squares of all the entries:
 $$ \|A\|_F = \sqrt{\sum_{i,j} a_{ij}^2}. $$
-The Frobenius norm acts as a very nice generalization of the $L^2$ norm for vectors, and is an indespensible tool in both linear algebra and data science. The point is that this "approximation" above actually works in the Frobenius norm, and this reduced singular value decomposition in fact minimizes the error.
+The Frobenius norm acts as a very nice generalization of the $L^2$ norm for vectors, and is an indispensable tool in both linear algebra and data science. The point is that this "approximation" above actually works in the Frobenius norm, and this reduced singular value decomposition in fact minimizes the error.
 
 > **Theorem** (Eckart–Young–Mirsky). Let $A$ be an $n \times p$ matrix of rank $r$. For $k \leq r$,
 > $$ \min_{B \text{ such that rank}(B) \leq k} \|A - B\|_F = \|A - A_k\|_F. $$
-> The (at most) rank $k$ matrix $A_k$ also realizes the minimm when optimizing for the operator norm.
+> The (at most) rank $k$ matrix $A_k$ also realizes the minimum when optimizing for the operator norm.
 
 > **Example**. Recall that we have the following SVD:
 > $$ \begin{bmatrix} 3 & 2 & 2 \\ 2 & 3 & -2 \end{bmatrix} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix} \begin{bmatrix} 5 & 0 & 0 \\ 0 & 3 & 0 \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}^T. $$
@@ -1296,7 +1296,7 @@ def reduced_svd_matrix_k(U, S, Vh, k):
 ```
 Now, as $\hat{X}$ has rank 4, we can do a reduced matrix of rank 1,2,3. We will do this in a loop.
 
-> **Remark**. We'll divide the error by the (Frobenius) norm so that we have a relative error. E.g., if two houses are within 10k of eachother, they are similarly priced. The magnitude of error being large doesn't say much if our quantities are large.
+> **Remark**. We'll divide the error by the (Frobenius) norm so that we have a relative error. E.g., if two houses are within 10k of each other, they are similarly priced. The magnitude of error being large doesn't say much if our quantities are large.
 > 
 ```python
 for k in [1, 2, 3]:
@@ -1349,9 +1349,9 @@ The idea is based on the Eckart-Young-Mirsky theorem: the best low-rank approxim
 
 ### The Setup: Images as Matrices
 
-Suppose we have a digital image of my dog, Bella. For simplicity, let's assume it is a grayscale image. From the perspective of a computer, this image is simply a large $n \times p$ matrix $A$, where $n$ is the height in pixels and $p$ is the width. The entry $A_{ij}$ represents the brightness (intesity) of the pixel at row $i$ and column $j$, typically taking values between 0 (black) and 255 (white) (or 0 and 1 if we normalize). This matrix representation allows us to leverage linear algebra techniques for image manipulation and analysis.
+Suppose we have a digital image of my dog, Bella. For simplicity, let's assume it is a grayscale image. From the perspective of a computer, this image is simply a large $n \times p$ matrix $A$, where $n$ is the height in pixels and $p$ is the width. The entry $A_{ij}$ represents the brightness (intensity) of the pixel at row $i$ and column $j$, typically taking values between 0 (black) and 255 (white) (or 0 and 1 if we normalize). This matrix representation allows us to leverage linear algebra techniques for image manipulation and analysis.
 
-> **Remark**. Color images, by contrast, consist of multiple channels (e.g., RGB), and are therefore naturally repesented as collections of matrices. To avoid introducing additional structure unrelated to the core linear algebraic ideas, we will restrict ourselves to grayscale images. That is, we will convert a chosen image into grayscale and apply the SVD directly.
+> **Remark**. Color images, by contrast, consist of multiple channels (e.g., RGB), and are therefore naturally represented as collections of matrices. To avoid introducing additional structure unrelated to the core linear algebraic ideas, we will restrict ourselves to grayscale images. That is, we will convert a chosen image into grayscale and apply the SVD directly.
 
 ### Experimental Setup
 
@@ -1361,7 +1361,7 @@ We will perform the following steps.
 3. **Compute the SVD**. Decompose the noisy matrix into its singular values and vectors.
 4. **Truncating the SVD**. Retain only the top $k$ singular values to create a low-rank approximation.
 5. **Reconstructing the Image**. Use the truncated SVD to reconstruct the denoised image.
-6. **Comparing results**. Visually and quantitavely compare the original, noisy, and denoised images. 
+6. **Comparing results**. Visually and quantitatively compare the original, noisy, and denoised images. 
 
 ### Loading and Preprocessing the Image
 Let's start with this picture of my beautiful dog Bella. Here it is!
@@ -1411,7 +1411,7 @@ This gives the following image.
 
 Recall that the SVD of $A$ is given by $A = U\Sigma V^T$ where $U$ is an $n \times n$ orthogonal matrix, $V$ is a $p \times p$ orthogonal matrix, and $\Sigma$ is an $n \times p$ diagonal matrix with the singular values on the diagonal, in decreasing order. The left singular vectors correspond to the principal components of the image columns, while the right singular vectors correspond to the principal components of the image rows. 
 
-The truncated SVD is given by $A_k = U_k\Sigma_kV_k^T$, where $U_k,V_k, \Sigma_k$ are the truncated versions of $U,V, \Sigma$, respectively. This truncated SVD gives a *best approximation* of our matrix by a lower rank matrix, in terms of the Frobenius norm. Truncating the SVD is equivalent to projecting the image onto the top $k$ principal ccomponents. 
+The truncated SVD is given by $A_k = U_k\Sigma_kV_k^T$, where $U_k,V_k, \Sigma_k$ are the truncated versions of $U,V, \Sigma$, respectively. This truncated SVD gives a *best approximation* of our matrix by a lower rank matrix, in terms of the Frobenius norm. Truncating the SVD is equivalent to projecting the image onto the top $k$ principal components. 
 
 The larger singular values correspond to the most important features of the image, while the smaller singular values often contain noise. By truncating the smaller singular values, we can remove the noise while preserving the essential information.
 
@@ -1424,7 +1424,7 @@ def truncated_svd(U, S, Vh, k):
     return U[:, :k] @ np.diag(S[:k]) @ Vh[:k, :]
 ```
 
-If you run the code, you'll see that it takes a bit. This is because computing the SVD of a large image is commputationally expensive. There are other methods (e.g., randomized SVD) that exist for scalability. 
+If you run the code, you'll see that it takes a bit. This is because computing the SVD of a large image is computationally expensive. There are other methods (e.g., randomized SVD) that exist for scalability. 
 
 #### Singular Value Decay
 
@@ -1522,7 +1522,7 @@ plt.show()
 We can see that as $k$ increases, more image detail is recovered, but noise also begins to reappear.
 
 ### Quantitative Evaluation
-We can quantify the quality of the denoised image using the **mean squared error (MSE)** and **peak signa-to-noise ratio (PSNR)**:
+We can quantify the quality of the denoised image using the **mean squared error (MSE)** and **peak signal-to-noise ratio (PSNR)**:
 $$ \text{MSE} = \frac{1}{np} \sum_{i,j} (A_{ij} - A_k^{ij})^2, \quad \text{PSNR} = 10 \log_{10} \left( \frac{255^2}{\text{MSE}} \right) $$
 MSE quantifies the difference between two images, while higher PSNR values indicate better image quality and less distortion.
 
@@ -1569,7 +1569,7 @@ Let's put this into a table.
 | 50   | 56.81  | 30.59    | Good balance  |
 | 100  | 64.08  | 30.06    | Noise returns |
 
-We can even see further values of MSE and PSNR. Although truncated SVD minimizes the reconstruction error relative to the noisy image, our quantitative evaluation measures error relative to the original clean image. As $k$ increases, the approximation increasingly fits noise-dominated singular components. Consequently, the mean squared error initially decreases as signal structure is recovered, but eventually increases once noise begins to dominate. This behavior reflects the bias–variance tradeoff inherent in spectral denoising and explains why the MSE is not monotone in $k$.
+We can even see further values of MSE and PSNR. Although truncated SVD minimizes the reconstruction error relative to the noisy image, our quantitative evaluation measures error relative to the original clean image. As $k$ increases, the approximation increasingly fits noise-dominated singular components. Consequently, the mean squared error initially decreases as signal structure is recovered, but eventually increases once noise begins to dominate. This behavior reflects the bias–variance trade off inherent in spectral denoising and explains why the MSE is not monotone in $k$.
 
 | $k$   | MSE    | PSNR (dB)|       Visual Quality       |
 |-------|--------|----------|----------------------------|
@@ -1585,13 +1585,13 @@ Note that the MSE between the original matrix A and the noisy matrix is 624.67.
 >>> mse(A,A_noisy)
 np.float64(624.6700890361011)
 ```
-So as the $k$ goes to the maximum it can be (in this case, 3456, as the image is 5184 x 3456), we should expect the MSE to go towards this value -- i.e., as $k$ gets higher, we are just approximating our nosiy image better and better. 
+So as the $k$ goes to the maximum it can be (in this case, 3456, as the image is 5184 x 3456), we should expect the MSE to go towards this value -- i.e., as $k$ gets higher, we are just approximating our noisy image better and better. 
 # Appendix
 
 ## Figures
 
 ### Line of best fit
-#### Line of best fit for generated scattor plot	
+#### Line of best fit for generated scatter plot	
 The first figure is a line of best fit for scattered points. Here is the python code that will produce the image. 
 
 ```python
