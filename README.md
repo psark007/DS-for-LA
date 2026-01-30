@@ -2007,3 +2007,10 @@ plt.show()
 ### Math
 - Math basis:  https://docs.python.org/3/library/math.html
 - math.ceil: https://docs.python.org/3/library/math.html#math.ceil (Return the ceiling of x, the smallest integer greater than or equal to x)
+
+
+# License
+
+This project is licensed under the MIT License.
+See the [`LICENSE`](./LICENSE) file for details.
+
