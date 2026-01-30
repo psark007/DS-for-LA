@@ -1,6 +1,7 @@
-A not-so comprehensive guide bridging linear algebra theory with practical data science implementation. Meant for someone to learn data science by using their strong linear algebra background. 
+# Data Science for the Linear Algebraist. 
  
 ## Project Overview
+A not-so comprehensive guide bridging linear algebra theory with practical data science implementation. Meant for someone to learn data science by using their strong linear algebra background. 
 This project demonstrates how fundamental linear algebra concepts power modern machine learning algorithms, with hands-on Python implementations.
 
 ## Main Dependencies
