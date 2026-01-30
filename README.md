@@ -1,9 +1,9 @@
-A not-so comprehensive guide bridging linear algebra theory with practical data science implementation.
+A not-so comprehensive guide bridging linear algebra theory with practical data science implementation. Meant for someone to learn data science by using their strong linear algebra background. 
  
 ## Project Overview
 This project demonstrates how fundamental linear algebra concepts power modern machine learning algorithms, with hands-on Python implementations.
 
-## Dependencies
+## Main Dependencies
 - **Python 3**
 - **NumPy** - Matrix operations and linear algebra
 - **Pandas** - Data manipulation
@@ -18,7 +18,16 @@ This project demonstrates how fundamental linear algebra concepts power modern m
 ## To do
 - [ ] Upload Jupyter notebook
 
----
+## Contact
+Pawel Sarkowicz
+
+💼 <a href="https://www.linkedin.com/in/pawel-sarkowicz-668221390/">LinkedIn</a>
+
+🌐 <a href="https://pawelsarkowicz.xyz">website</a>
+
+💻 <a href="https://git.pawelsarkowicz.xyz/ps">git</a>
+
+📧 <a href="mailto:ps@pawelsarkowicz.xyz">email</a>
 
 January 2026
 
