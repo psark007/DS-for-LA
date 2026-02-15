@@ -187,7 +187,7 @@ _ = plt.legend()
 plt.show()
 ```
 
-![line_of_best_fit easy example.png](./figures/line_of_best_fit_easy_example.png)
+![line_of_best_fit_easy_example.png](./figures/line_of_best_fit_easy_example.png)
 
 What about `numpy.linalg.lstsq`? Is it any different?
 ```python
