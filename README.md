@@ -1145,6 +1145,7 @@ As we can see, everything is basically correlated, and we clearly have some redu
 
 This section is structured as follows. 
 - [Low-rank approximation via SVD](#low-rank-approximation-via-svd)
+- [Centering data](#centering-data)
 
 
 ## Low-rank approximation via SVD
