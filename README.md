@@ -102,6 +102,7 @@ If the system $\tilde{X}\tilde{\beta} = y$ is consistent, then we can find a sol
 $$ e = y - \tilde{X}\tilde{\beta} $$
 
 is small. By small, we often mean that $e$ is small in $L^2$ norm; i.e., we are minimizing the the sums of the squares of the differences between the components of $y$ and the components of $\tilde{X}\tilde{\beta}$. This is known as a **least squares solution**. Assuming that our data points live in the Euclidean plane, this precisely describes finding a line of best fit.
+
 ![line_of_best_fit_generated1.png](./figures/line_of_best_fit_generated1.png)
 
 The structure of this sections is as follows.
@@ -339,7 +340,9 @@ df.plot(
 )
 plt.show()
 ```
+
 ![house_price_vs_square_ft.png](./figures/house_price_vs_square_ft.png)
+
 ![house_price_vs_bedrooms.png](./figures/house_price_vs_bedrooms.png)
 
 We can even do square footage vs bedrooms. 
@@ -949,6 +952,7 @@ where $B$ will be a $p \times k$ matrix of parameters and $Y$ will be the $p \ti
 Sometimes fitting a line to a set of $n$ data points clearly isn't the right thing to do. To emphasize the limitations of linear models, we generate data from a purely quadratic relationship. In this setting, the space of linear functions is not rich enough to capture the underlying structure, and the linear least-squares solution exhibits systematic error. Expanding the feature space to include quadratic terms resolves this issue.
 
 For example, suppose our data looked like the following. 
+
 ![quadratic_data.png](./figures/quadratic_data.png)
 
 If we try to find a line of best fit, we get something that doesn't really describe or approximate our data at all...
@@ -1366,6 +1370,7 @@ We will perform the following steps.
 
 ### Loading and Preprocessing the Image
 Let's start with this picture of my beautiful dog Bella. Here it is!
+
 ![bella.jpg](./pictures/bella.jpg)
 
 Let's first convert it to grayscale.
@@ -1386,6 +1391,7 @@ plt.show()
 ```
 
 Here is the result.
+
 ![bella_grayscale.jpg](./pictures/bella_grayscale.jpg)
 
 ### Adding Noise
@@ -1404,6 +1410,7 @@ plt.axis("off")
 ```
 
 This gives the following image. 
+
 ![bella_grayscale_noisy.jpg](./pictures/bella_grayscale_noisy.jpg)
 
 
