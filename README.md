@@ -1,4 +1,4 @@
-The LaTeX does not seem to render properly on GitLab. This repo is mirrored on my gitea server here <a href="https://git.pawelsarkowicz.xyz/ps/DS-for-LA">here</a>, where the LaTeX seems to render properly. 
+The LaTeX does not seem to render properly on GitLab. This repo is mirrored on my gitea server <a href="https://git.pawelsarkowicz.xyz/ps/DS-for-LA">here</a>, where the LaTeX seems to render properly. 
 
 # Data Science for the Linear Algebraist. 
  
