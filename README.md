@@ -68,9 +68,9 @@ The answer of course boils down to linear algebra, and we will begin by translat
 >
 > So, for example, the first house is 1600 square feet, has 3 bedrooms, and costs $500,000, and so on. Our goal will be to understand the cost of a house in terms of the number of bedrooms as well as the square footage.
 > Concretely this gives us a matrix and a vector:
-> ```math
-> X = \begin{bmatrix} 1600 & 3 \\ 2100 & 4 \\ 1550 & 2 \end{bmatrix} \text{ and } y =\begin{bmatrix} 500 \\ 650 \\ 475 \end{bmatrix}
-> ```
+```math
+X = \begin{bmatrix} 1600 & 3 \\ 2100 & 4 \\ 1550 & 2 \end{bmatrix} \text{ and } y =\begin{bmatrix} 500 \\ 650 \\ 475 \end{bmatrix}
+```
 > So translating to linear algebra, the goal is to understand how $y$ depends on the columns of $X$.
 
 
@@ -133,9 +133,9 @@ We will often work with the square of the $L^2$ norm to simplify things (the squ
 
 > **Definition**: Let $A$ be an $m \times n$ matrix and $b \in \mathbb{R}^n$. A **least-squares solution** of $Ax = b$ is a vector $x_0 \in \mathbb{R}^n$ such that
 > 
-> ```math
-> \|b - Ax_0\|_2 \leq \|b - Ax\|_2 \text{ for all } x \in \mathbb{R}^n.
-> ```
+```math
+\|b - Ax_0\|_2 \leq \|b - Ax\|_2 \text{ for all } x \in \mathbb{R}^n.
+```
 
 So a least-squares solution to the equation $Ax = b$ is trying to find a vector $x_0 \in \mathbb{R}^n$ which realizes the smallest distance between the vector $b$ and the column space
 ```math
@@ -143,32 +143,32 @@ So a least-squares solution to the equation $Ax = b$ is trying to find a vector 
 ```
 of $A$. We know this to be the projection of the vector $b$ onto the column space. 
 
-![projection_of_vector_onto_plane.png](./figures/projection_of_vector_onto_plane.png))
+![projection_of_vector_onto_plane.png](./figures/projection_of_vector_onto_plane.png)
 
 > **Theorem**: The set of least-squares solutions of $Ax = b$ coincides with solutions of the **normal equations** $A^TAx = A^Tb$. Moreover, the normal equations always have a solution.
 
 Let us first see why we get a line of best fit. 
 
 > **Example**. Let us show why this describes a line of best fit when we are working with one feature and one target. Suppose that we observe four data points
-> ```math
-> X = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \text{ and } y =  \begin{bmatrix} 1 \\ 2\\ 2 \\ 4 \end{bmatrix}.
-> ```
+```math
+X = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \text{ and } y =  \begin{bmatrix} 1 \\ 2\\ 2 \\ 4 \end{bmatrix}.
+```
 > We want to fit a line $y = \beta_0 + \beta_1x$ to these data points. We will have our augmented matrix be
-> ```math
-> \tilde{X} = \begin{bmatrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \\ 1 & 4 \end{bmatrix},
-> ```
+```math
+\tilde{X} = \begin{bmatrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \\ 1 & 4 \end{bmatrix},
+```
 > and our parameter be
-> ```math
-> \tilde{\beta} = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}.
-> ```
+```math
+\tilde{\beta} = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}.
+```
 > We have that
-> ```math
-> \tilde{X}^T\tilde{X} = \begin{bmatrix} 4 & 10 \\ 10 & 30 \end{bmatrix} \text{ and } \tilde{X}^Ty = \begin{bmatrix} 9 \\ 27 \end{bmatrix}.
-> ```
+```math
+\tilde{X}^T\tilde{X} = \begin{bmatrix} 4 & 10 \\ 10 & 30 \end{bmatrix} \text{ and } \tilde{X}^Ty = \begin{bmatrix} 9 \\ 27 \end{bmatrix}.
+```
 > The 2x2 matrix $\tilde{X}^T\tilde{X}$ is easy to invert, and so we get that
-> ```math
-> \tilde{\beta} = (\tilde{X}^T\tilde{X})^{-1}\tilde{X}^Ty = \frac{1}{10}\begin{bmatrix} 15 & -5 \\ -5 & 2 \end{bmatrix}\begin{bmatrix} 9 \\ 27 \end{bmatrix} = \begin{bmatrix} 0 \\ \frac{9}{10} \end{bmatrix}.
-> ```
+```math
+\tilde{\beta} = (\tilde{X}^T\tilde{X})^{-1}\tilde{X}^Ty = \frac{1}{10}\begin{bmatrix} 15 & -5 \\ -5 & 2 \end{bmatrix}\begin{bmatrix} 9 \\ 27 \end{bmatrix} = \begin{bmatrix} 0 \\ \frac{9}{10} \end{bmatrix}.
+```
 > So our line of best fit is of them form $y = \frac{9}{10}x$.
 
 Although the above system was small and we could solve the system of equations explicitly, this isn't always feasible. We will generally use python in order to solve large systems. 
@@ -241,29 +241,29 @@ So it is a little different -- and, in fact, closer to our exact answer (the int
 Now  going to our initial example. 
 
 > **Example**: Let us work with the example from above. We augment the matrix with a column of 1's to include an intercept term:
-> ```math
-> \tilde{X} = \begin{bmatrix} 1 & 1600 & 3 \\ 1 & 2100 & 4 \\ 1 & 1550 & 2 \end{bmatrix}.
-> ```
+```math
+\tilde{X} = \begin{bmatrix} 1 & 1600 & 3 \\ 1 & 2100 & 4 \\ 1 & 1550 & 2 \end{bmatrix}.
+```
 > Let us solve the normal equations
-> ```math
-> \tilde{X}^T\tilde{X}\tilde{\beta} = \tilde{X}^Ty.
-> ```
+```math
+\tilde{X}^T\tilde{X}\tilde{\beta} = \tilde{X}^Ty.
+```
 > We have
-> ```math
-> \tilde{X}^T\tilde{X} = \begin{bmatrix}  3 & 5250 & 9 \\ 5250 & 9372500 & 16300 \\ 9 & 16300 & 29\end{bmatrix} \text{ and } \tilde{X}^Ty = \begin{bmatrix} 1625 \\ 2901500 \\ 5050  \end{bmatrix}.
-> ```
+```math
+\tilde{X}^T\tilde{X} = \begin{bmatrix}  3 & 5250 & 9 \\ 5250 & 9372500 & 16300 \\ 9 & 16300 & 29\end{bmatrix} \text{ and } \tilde{X}^Ty = \begin{bmatrix} 1625 \\ 2901500 \\ 5050  \end{bmatrix}.
+```
 > Solving this system of equations yields the parameter vector $\tilde{\beta}$. In this case, we have
-> ```math
-> \tilde{\beta}   = \begin{bmatrix} \frac{200}{9} \\ \frac{5}{18} \\ \frac{100}{9} \end{bmatrix}.
-> ```
+```math
+\tilde{\beta}   = \begin{bmatrix} \frac{200}{9} \\ \frac{5}{18} \\ \frac{100}{9} \end{bmatrix}.
+```
 > When we apply $\tilde{X}$ to $\tilde{\beta}$, we get
-> ```math
-> \tilde{X}\tilde{\beta} = \begin{bmatrix} 500 \\ 650 \\ 475 \end{bmatrix},
-> ```
+```math
+\tilde{X}\tilde{\beta} = \begin{bmatrix} 500 \\ 650 \\ 475 \end{bmatrix},
+```
 > which is our target on the nose. This means that we can expect, based on our data, that the cost of a house will be
-> ```math
-> \frac{200}{9} + \frac{5}{18}(\text{square footage}) + \frac{100}{9}(\text{\# of bedrooms}).
-> ```
+```math
+\frac{200}{9} + \frac{5}{18}(\text{square footage}) + \frac{100}{9}(\text{\# of bedrooms}).
+```
 
 In the above, we actually had a consistent system to begin with, so our least-squares solution gave our prediction honestly. What happens if we have an inconsistent system?
 
@@ -277,33 +277,33 @@ In the above, we actually had a consistent system to begin with, so our least-sq
 > | 4 | 2000 | 4 | 620 |
 > 
 > So setting up our system, we want a least-square solution to the matrix equation
-> ```math
-> \begin{bmatrix}  1 & 1600 & 3 \\ 1 & 2100 & 4 \\ 1 & 1550 & 2 \\ 1 & 1600 & 3 \\ 1 & 2000 & 4  \end{bmatrix}\tilde{\beta} = \begin{bmatrix}  500 \\ 650 \\ 475 \\ 490 \\ 620 \end{bmatrix}.
-> ```
+```math
+\begin{bmatrix}  1 & 1600 & 3 \\ 1 & 2100 & 4 \\ 1 & 1550 & 2 \\ 1 & 1600 & 3 \\ 1 & 2000 & 4  \end{bmatrix}\tilde{\beta} = \begin{bmatrix}  500 \\ 650 \\ 475 \\ 490 \\ 620 \end{bmatrix}.
+```
 > Note that the system is inconsistent (the 1st and 4th rows agree in $\tilde{X}$, but they have different costs). Writing the normal equations we have
-> ```math
-> \tilde{X}^T\tilde{X} = \begin{bmatrix} 5 & 8850 & 16 \\ 8850 & 15932500 & 29100 \\ 16 & 29100 & 54 \end{bmatrix} \text{ and } \tilde{X}y = \begin{bmatrix} 2735 \\ 4 925 250 \\ 9000 \end{bmatrix}.
-> ```
+```math
+\tilde{X}^T\tilde{X} = \begin{bmatrix} 5 & 8850 & 16 \\ 8850 & 15932500 & 29100 \\ 16 & 29100 & 54 \end{bmatrix} \text{ and } \tilde{X}y = \begin{bmatrix} 2735 \\ 4 925 250 \\ 9000 \end{bmatrix}.
+```
 > Solving this linear system yields
-> ```math
-> \tilde{\beta} = \begin{bmatrix} 0 \\ \frac{3}{10} \\ 5 \end{bmatrix}.
-> ```
+```math
+\tilde{\beta} = \begin{bmatrix} 0 \\ \frac{3}{10} \\ 5 \end{bmatrix}.
+```
 > This is a vastly different answer! Applying $\tilde{X}$ to it yields
-> ```math
-> \tilde{X}\tilde{\beta} = \begin{bmatrix} 495 \\ 650 \\ 475 \\ 495 \\ 620 \end{bmatrix}.
-> ```
+```math
+\tilde{X}\tilde{\beta} = \begin{bmatrix} 495 \\ 650 \\ 475 \\ 495 \\ 620 \end{bmatrix}.
+```
 > Note that the error here is
-> ```math
-> y - \tilde{X}\tilde{\beta} = \begin{bmatrix} 5 \\ 0 \\ 0 \\ -5 \\ 0 \end{bmatrix},
-> ```
+```math
+y - \tilde{X}\tilde{\beta} = \begin{bmatrix} 5 \\ 0 \\ 0 \\ -5 \\ 0 \end{bmatrix},
+```
 > which has squared $L^2$ norm
-> ```math
-> \|y - \tilde{X}\tilde{\beta}\|_2^2 = 25 + 25 = 50.
-> ```
+```math
+\|y - \tilde{X}\tilde{\beta}\|_2^2 = 25 + 25 = 50.
+```
 > So this says that, given our data, we can roughly estimate the cost of a house, within 50k or so, to be
-> ```math
-> \approx \frac{3}{10}(\text{square footage}) + 5(\text{\# of bedrooms}).
-> ```
+```math
+\approx \frac{3}{10}(\text{square footage}) + 5(\text{\# of bedrooms}).
+```
 In practice, our data sets can be gigantic, and so there is absolutely no hope of doing computations by hand. It is nice to know that theoretically we can do things like this though. 
 
 > **Theorem**: Let $A$ be an $m \times n$ matrix and $b \in \mathbb{R}^n$. The following are equivalent.
@@ -468,40 +468,40 @@ Q^TA = Q^T(QR) = IR = R.
 ```
 
 > **Example**. Find a QR decomposition for the matrix
->  ```math
->  A = \begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \\ 0 & 0  & 0 \end{bmatrix}.
-> ```
+```math
+A = \begin{bmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \\ 0 & 0  & 0 \end{bmatrix}.
+```
 > Note that one trivially see (or by applying the Gram-Schmidt procedure) that
-> ```math
-> \begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}
-> ```
+```math
+\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 1 \\ 0 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}
+```
 > forms an orthonormal basis for the column space of $A$. So with
-> ```math
-> Q = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \text{ and }R = \begin{bmatrix} 1 & 1 & 1\\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix},
-> ```
+```math
+Q = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \text{ and }R = \begin{bmatrix} 1 & 1 & 1\\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{bmatrix},
+```
 > we have $A = QR$.
 
 Let's do a more involved example.
 > **Example**. Consider the matrix
-> ```math
-> A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}.
-> ```
+```math
+A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}.
+```
 > One can apply the Gram-Schmidt procedure to the columns of $A$ to find that
-> ```math
-> \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} -3 \\ 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 \\ -\frac{2}{3} \\ \frac{1}{3} \\ \frac{1}{3}\end{bmatrix}
-> ```
+```math
+\begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} -3 \\ 1 \\ 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 0 \\ -\frac{2}{3} \\ \frac{1}{3} \\ \frac{1}{3}\end{bmatrix}
+```
 > forms an orthogonal basis for the column space of $A$. Normalizing, we get that
-> ```math
-> Q = \begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix}
-> ```
+```math
+Q = \begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix}
+```
 > is an appropriate $Q$. Thus
-> ```math
-> \begin{split} R = Q^TA &= \begin{bmatrix} \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\ -\frac{3}{\sqrt{12}} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{12}} \\ 0 & -\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}} \end{bmatrix}\begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix} \\ &= \begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}. \end{split}
-> ```
+```math
+\begin{split} R = Q^TA &= \begin{bmatrix} \frac{1}{2} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\ -\frac{3}{\sqrt{12}} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{12}} \\ 0 & -\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}} \end{bmatrix}\begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix} \\ &= \begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}. \end{split}
+```
 > So all together,
-> ```math
-> A =  \begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix}\begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}.
-> ```
+```math
+A =  \begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix}\begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}.
+```
 
 To do this numerically, we can use `numpy.linalg.qr`.
 
@@ -542,32 +542,32 @@ array([[-2.        , -1.5       , -1.        ],
 One of the primary uses of QR decompositions is to solve least squares problems, as introduced above. Assuming that $A$ has full column rank, we can write $A = QR$ as a QR decomposition, and then we can find a least-squares solution to $Ax = b$ by solving the upper-triangular system.
 
 > **Theorem**. Let $A$ be an $m \times n$ matrix with full column rank, and let $A = QR$ be a QR factorization of $A$. Then, for each $b \in \mathbb{R}^m$, the equation $Ax = b$ has a unique least-squares solution, arising from the system
-> ```math
-> Rx = Q^Tb.
-> ```
+```math
+Rx = Q^Tb.
+```
 
 Normal equations can be *ill-conditioned*, i.e., small errors in calculating $A^TA$ give large errors when trying to solve the least-squares problem. When $A$ has full column rank, a QR factorization will allow one to compute a solution to the least-squares problem more reliably. 
 
 > **Example**. Let
-> ```math
-> A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix} \text{ and } b = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bmatrix}.
-> ```
+```math
+A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix} \text{ and } b = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bmatrix}.
+```
 > We can find the least-squares solution $Ax = b$ by using the QR decomposition. Let us use the QR decomposition from above, and solve the system
-> ```math
-> Rx = Q^Tb.
-> ```
+```math
+Rx = Q^Tb.
+```
 > As
-> ```math
-> \begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix}^T\begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} \frac{3}{2} \\ -\frac{1}{2\sqrt{3}} \\ -\frac{1}{\sqrt{6}}, \end{bmatrix}
-> ```
+```math
+\begin{bmatrix} \frac{1}{2} & -\frac{3}{\sqrt{12}} & 0 \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & -\frac{2}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \\ \frac{1}{2} & \frac{1}{\sqrt{12}} & \frac{1}{\sqrt{6}} \end{bmatrix}^T\begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bmatrix} = \begin{bmatrix} \frac{3}{2} \\ -\frac{1}{2\sqrt{3}} \\ -\frac{1}{\sqrt{6}}, \end{bmatrix}
+```
 > we are looking at the system
-> ```math
-> \begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}x  =\begin{bmatrix} \frac{3}{2} \\ -\frac{1}{2\sqrt{3}} \\ -\frac{1}{\sqrt{6}} \end{bmatrix}.
-> ```
+```math
+\begin{bmatrix} 2 & \frac{3}{2} & 1 \\ 0 & \frac{3}{\sqrt{12}} & \frac{2}{\sqrt{12}} \\ 0 & 0 & \frac{2}{\sqrt{6}} \end{bmatrix}x  =\begin{bmatrix} \frac{3}{2} \\ -\frac{1}{2\sqrt{3}} \\ -\frac{1}{\sqrt{6}} \end{bmatrix}.
+```
 > Solving this system yields that
-> ```math
-> x_0 = \begin{bmatrix} 1 \\ 0 \\ -\frac{1}{2} \end{bmatrix}
-> ```
+```math
+x_0 = \begin{bmatrix} 1 \\ 0 \\ -\frac{1}{2} \end{bmatrix}
+```
 > is a least-squares solution to $Ax = b$.
 
 Let us set this system up in python and use `numpy.linalg.solve`. 
@@ -662,13 +662,13 @@ Let's see what our range projections are for the matrices above. Note that the f
 Let's look at the other matrix. 
 
 > **Example**. Working with the matrix
-> ```math
-> A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix},
-> ```
+```math
+A = \begin{bmatrix} 1 & 0 & 0 \\ 1 & 1 & 0 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix},
+```
 > the projection onto the column space if given by
-> ```math
-> QQ^T = \begin{bmatrix} 1 \\ & 1 \\ & & \frac{1}{2} & \frac{1}{2} \\ & & \frac{1}{2} & \frac{1}{2} \end{bmatrix}.
-> ```
+```math
+QQ^T = \begin{bmatrix} 1 \\ & 1 \\ & & \frac{1}{2} & \frac{1}{2} \\ & & \frac{1}{2} & \frac{1}{2} \end{bmatrix}.
+```
 > This is a well-understood projection: it is the direct sum of the identity on $\mathbb{R}^2$ and the projection onto the line $y = x$ in $\mathbb{R}^2$.
 
 Now let's use python to implement the projection.
@@ -711,13 +711,13 @@ def proj_onto_col_space(A):
 We'll come back to this later. We should really be incorporating some sort of error tolerance so that things are **super super** tiny can actually just be sent to zero. 
 
 > **Remark**. Another way to get the projection onto the column space of an $n \times p$ matrix $A$ of full column rank is to take
-> ```math
-> P = A(A^TA)^{-1}A^T.
-> ```
+```math
+P = A(A^TA)^{-1}A^T.
+```
 > Indeed, let $b \in \mathbb{R}^n$ and let $x_0 \in \mathbb{R}^p$ be a solution to the normal equations
-> ```math
-> A^TAx_0 = A^Tb.
-> ```
+```math
+A^TAx_0 = A^Tb.
+```
 > Then $x_0 = (A^TA)^{-1}A^Tb$ and so $Ax_0 = A(A^TA^{-1})A^Tb$ is the (unique!) vector in the column space of $A$ which is closest to $b$, i.e., the projection of $b$ onto the column space of $A$.
 > However, taking transposes, multiplying, and inverting is not what we would like to do numerically. 
 
@@ -726,21 +726,21 @@ We'll come back to this later. We should really be incorporating some sort of er
 The SVD is a very important matrix decomposition in both data science and linear algebra.
 
 > **Theorem**. For any matrix $n \times p$ matrix $X$, there exist an orthogonal $n \times n$ matrix $U$, an orthogonal $p \times p$ matrix $V$, and a diagonal $n \times p$ matrix $\Sigma$ with non-negative entries such that
-> ```math
-> X = U\Sigma V^T.
-> ```
+```math
+X = U\Sigma V^T.
+```
 > - The columns of $U$ are left **left singular vectors**.
 > - The columns of $V$ are the **right singular vectors**.
 > - $\Sigma$ has **singular values** $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0$ on its diagonal, where $r$ is the rank of $X$.
 
 > **Remark**. The SVD is clearly a generalization of matrix diagonalization, but it also generalizes the **polar decomposition** of a matrix. Recall that every $n \times n$ matrix $A$ can be written as $A = UP$ where $U$ is orthogonal (or unitary) and $P$ is a positive matrix. This is because if
-> ```math
-> A = U_0\Sigma V^T
-> ```
+```math
+A = U_0\Sigma V^T
+```
 > is the SVD for $A$, then $\Sigma$ is an $n \times n$ diagonal matrix with non-negative entries, hence any orthogonal conjugate of it is positive, and so
-> ```math
-> A = (U_0V^T)(V\Sigma V^T).
-> ```
+```math
+A = (U_0V^T)(V\Sigma V^T).
+```
 > Take $U = U_0V^T$ and $P = V\Sigma V^T$. 
 
 By hand, the algorithm for computing an SVD is as follows.
@@ -749,29 +749,29 @@ By hand, the algorithm for computing an SVD is as follows.
 3. Let $\Sigma$ be the $n \times p$ matrix whose diagonal entries are $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r$, and then zeroes if necessary. 
 
 > **Example**. Let us compute the SVD of
-> ```math
-> A = \begin{bmatrix} 3 & 2 & 2 \\ 2 & 3 & -2 \end{bmatrix}.
-> ```
+```math
+A = \begin{bmatrix} 3 & 2 & 2 \\ 2 & 3 & -2 \end{bmatrix}.
+```
 > First we note that
-> ```math
-> A^TA = \begin{bmatrix} 13 & 12 & 2 \\ 12 & 13 & -2 \\ 2 & -2 & 8 \end{bmatrix},
-> ```
+```math
+A^TA = \begin{bmatrix} 13 & 12 & 2 \\ 12 & 13 & -2 \\ 2 & -2 & 8 \end{bmatrix},
+```
 > which has eigenvalues $25,9,0$ with corresponding eigenvectors
-> ```math
-> \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ -1 \\ 4 \end{bmatrix}, \begin{bmatrix} -2 \\ 2 \\ 1 \end{bmatrix}.
-> ```
+```math
+\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ -1 \\ 4 \end{bmatrix}, \begin{bmatrix} -2 \\ 2 \\ 1 \end{bmatrix}.
+```
 > Normalizing, we get
-> ```math
-> V = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}.
-> ```
+```math
+V = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}.
+```
 > Now we set $u_1 = \frac{1}{5}Av_1$ and $u_2 = \frac{1}{3}Av_2$ to get
-> ```math
-> U = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix}.
-> ```
+```math
+U = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix}.
+```
 > So
-> ```math
-> A = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix} \begin{bmatrix} 5 & 0 & 0 \\ 0 & 3 & 0 \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}^T
-> ```
+```math
+A = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix} \begin{bmatrix} 5 & 0 & 0 \\ 0 & 3 & 0 \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}^T
+```
 > is our SVD decomposition.
 
 We note that in practice, we avoid the computation of $X^TX$ because if the entries of $X$ have errors, then these errors will be squared in $X^TX$. There are better computational tools to get singular values and singular vectors which are more accurate. This is what our python tools will use. 
@@ -857,25 +857,25 @@ Another final note is that the **operator norm** of a matrix $A$ agrees with its
 The SVD can be used to determine a least-squares solution for a given system. Recall that if $v_1,\dots,v_p$ is an orthonormal basis for $\mathbb{R}^p$ consisting of eigenvectors of $A^TA$, arranged so that they correspond to eigenvalues $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r$, then $\{Av_1,\dots,Av_r\}$ is an orthogonal basis for the column space of $A$. In essence, this means that when we have our left singular vectors $u_1,\dots,u_n$ (constructed based on our algorithm as above), we have that the first $r$ vectors form an orthonormal basis for the column space of $A$, and that the remaining $n - r$ vectors form an orthonormal basis for the perp of the column space of $A$ (which is also equal to the nullspace of $A^T$). 
 
 > **Definition**. Let $A$ be an $n \times p$ matrix and suppose that the rank of $A$ is $r \leq \min\{n,p\}$. Suppose that $A = U\Sigma V^T$ is the SVD, where the singular values are decreasing. Partition
-> ```math
-> U = \begin{bmatrix} U_r & U_{n-r} \end{bmatrix} \text{ and } V = \begin{bmatrix} V_r & V_{p-r} \end{bmatrix}
-> ```
+```math
+U = \begin{bmatrix} U_r & U_{n-r} \end{bmatrix} \text{ and } V = \begin{bmatrix} V_r & V_{p-r} \end{bmatrix}
+```
 > into submatrices, where $U_r$ and $V_r$ are the matrices whose columns are the first $r$ columns of $U$ and $V$ respectively. So $U_r$ is $n \times r$ and $V_r$ is $p \times r$. Let $D$ be the diagonal $r \times r$ matrices whose diagonal entries are $\sigma_1,\dots, \sigma_r$, so that
-> ```math
-> \Sigma = \begin{bmatrix} D & 0  \\ 0 & 0 \end{bmatrix}
-> ```
+```math
+\Sigma = \begin{bmatrix} D & 0  \\ 0 & 0 \end{bmatrix}
+```
 > and note that
-> ```math
-> A = U_rDV_r^T.
-> ```
+```math
+A = U_rDV_r^T.
+```
 > We call this the reduced singular value decomposition of $A$. Note that $D$ is invertible, and its inverse is simply
-> ```math
-> D = \begin{bmatrix} \sigma_1^{-1} \\ & \sigma_2^{-1} \\ & & \ddots \\ & & & \sigma_r^{-1} \end{bmatrix}.
-> ```
+```math
+D = \begin{bmatrix} \sigma_1^{-1} \\ & \sigma_2^{-1} \\ & & \ddots \\ & & & \sigma_r^{-1} \end{bmatrix}.
+```
 > The **pseudoinverse** (or **Moore-Penrose inverse**) of $A$ is the matrix
-> ```math
-> A^+ = V_rD^{-1}U_r^T.
-> ```
+```math
+A^+ = V_rD^{-1}U_r^T.
+```
 
 We note that the pseudoinverse $A^+$ is a $p \times n$ matrix. 
 
@@ -890,29 +890,29 @@ Then
 As mentioned before, the columns of $U_r$ form an orthonormal basis for the column space of $A$ and so $U_rU_r^T$ is the orthogonal projection onto the range of $A$. That is, $Ax_0$ is precisely the projection of $b$ onto the column space of $A$, meaning that this yields a least-squares solution. This gives the following.
 
 > **Theorem**. Let $A$ be an $n \times p$ matrix and $b \in \mathbb{R}^n$. Then
-> ```math
-> x_0 = A^+b
-> ```
+```math
+x_0 = A^+b
+```
 > is a least-squares solution to $Ax = b$. 
 
 Taking pseudoinverses is quite involved. We'll do one example by hand, and then use python -- and we'll see something go wrong! There is a function `numpy.linalg.pinv` in numpy that will take a pseudoinverse. We can also just use `numpy.linalg.svd` and do the process above.
 
 > **Example**. We have the following SVD $A = U\Sigma V^T$. 
-> ```math
-> \begin{bmatrix} 1 & 1 & 2\\ 0 & 1 & 1  \\ 1 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} \sqrt{\frac{2}{3}} & 0 & 0 & -\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{3}} \\  \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{3}} \\ 0 & 0 & 1 & 0 \end{bmatrix} \begin{bmatrix} 3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0  & 0 \\ 0 & 0 & 0 \end{bmatrix}\begin{bmatrix} \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} \\ \sqrt{\frac{2}{3}} & 0 & \frac{1}{\sqrt{3}} \end{bmatrix}^T.
-> ```
+```math
+\begin{bmatrix} 1 & 1 & 2\\ 0 & 1 & 1  \\ 1 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} \sqrt{\frac{2}{3}} & 0 & 0 & -\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{3}} \\  \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{3}} \\ 0 & 0 & 1 & 0 \end{bmatrix} \begin{bmatrix} 3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0  & 0 \\ 0 & 0 & 0 \end{bmatrix}\begin{bmatrix} \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{3}} \\ \sqrt{\frac{2}{3}} & 0 & \frac{1}{\sqrt{3}} \end{bmatrix}^T.
+```
 > Can we find a least-squares solution to $Ax = b$, where
-> ```math
-> b = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}?
-> ```
+```math
+b = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix}?
+```
 > The pseudoinverse of $A$ is
-> ```math
-> \begin{split} A^+ &= \begin{bmatrix} \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} \\ \sqrt{\frac{2}{3}} & 0 \end{bmatrix} \begin{bmatrix} 3 \\ & 1 \end{bmatrix} \begin{bmatrix} \sqrt{\frac{2}{3}} & 0 \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} \\ 0 & 0 \end{bmatrix}^T \\ &= \begin{bmatrix} \frac{1}{9} & -\frac{4}{9} & \frac{5}{9} & 0 \\  \frac{1}{9} & \frac{5}{9} & -\frac{4}{9} & 0 \\ \frac{2}{9} & \frac{1}{9} & \frac{1}{9} & 0\end{bmatrix},  \end{split}
-> ```
+```math
+\begin{split} A^+ &= \begin{bmatrix} \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} \\ \sqrt{\frac{2}{3}} & 0 \end{bmatrix} \begin{bmatrix} 3 \\ & 1 \end{bmatrix} \begin{bmatrix} \sqrt{\frac{2}{3}} & 0 \\ \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{2}} \\ 0 & 0 \end{bmatrix}^T \\ &= \begin{bmatrix} \frac{1}{9} & -\frac{4}{9} & \frac{5}{9} & 0 \\  \frac{1}{9} & \frac{5}{9} & -\frac{4}{9} & 0 \\ \frac{2}{9} & \frac{1}{9} & \frac{1}{9} & 0\end{bmatrix},  \end{split}
+```
 > and so a least-squares solution is given by
-> ```math
-> \begin{split} x_0 &= A^+b \\ &= \begin{bmatrix} \frac{1}{9} & -\frac{4}{9} & \frac{5}{9} & 0 \\  \frac{1}{9} & \frac{5}{9} & -\frac{4}{9} & 0 \\ \frac{2}{9} & \frac{1}{9} & \frac{1}{9} & 0\end{bmatrix}\begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix} \\ &= \begin{bmatrix} \frac{2}{9} \\ \frac{2}{9} \\ \frac{4}{9} \end{bmatrix}.  \end{split}
-> ```
+```math
+\begin{split} x_0 &= A^+b \\ &= \begin{bmatrix} \frac{1}{9} & -\frac{4}{9} & \frac{5}{9} & 0 \\  \frac{1}{9} & \frac{5}{9} & -\frac{4}{9} & 0 \\ \frac{2}{9} & \frac{1}{9} & \frac{1}{9} & 0\end{bmatrix}\begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix} \\ &= \begin{bmatrix} \frac{2}{9} \\ \frac{2}{9} \\ \frac{4}{9} \end{bmatrix}.  \end{split}
+```
 
 Now let's do this with python, and see an example of how things can go wrong. We'll try to take the pseudoinverse manually first.
 
@@ -982,21 +982,21 @@ array([[0.22222222],
 Numerical calculations involving matrix equations are quite reliable if we use the SVD. This is because the orthogonal matrices $U$ and $V$ preserve lengths and angles, leaving the stability of the problem to be governed by the singular values of the matrix $X$. Recall that if $X = U\Sigma V^T$, then solving the least-squares problem involves dividing by the non-zero singular values $\sigma_i$ of $X$. If these values are very small, their inverses become very large, and this will amplify any numerical errors.
 
 > **Definition**. Let $X$ be an $n \times p$ matrix and let $\sigma_1 \geq \cdots \geq \sigma_r$ be the non-zero singular values of $X$. The **condition number** of $X$ is the quotient
-> ```math
-> \kappa(X) = \frac{\sigma_1}{\sigma_r}
-> ```
+```math
+\kappa(X) = \frac{\sigma_1}{\sigma_r}
+```
 > of the largest and smallest non-zero singular values.
 
 A condition number close to 1 indicates a well-conditioned problem, while a large condition number indicates that small perturbations in data may lead to large changes in computation. Geometrically, $\kappa(X)$ measures how much $X$ distorts space. 
 
 > **Example**. Consider the matrices
-> ```math
-> A = \begin{bmatrix} 1 \\ & 1 \end{bmatrix} \text{ and } B = \begin{bmatrix} 1 \\ & \frac{1}{10^6} \end{bmatrix}.
-> ```
+```math
+A = \begin{bmatrix} 1 \\ & 1 \end{bmatrix} \text{ and } B = \begin{bmatrix} 1 \\ & \frac{1}{10^6} \end{bmatrix}.
+```
 > The condition numbers are
-> ```math
-> \kappa(A) = 1 \text{ and } \kappa(B) = 10^6.
-> ```
+```math
+\kappa(A) = 1 \text{ and } \kappa(B) = 10^6.
+```
 > Inverting $X_2$ includes dividing by $\frac{1}{10^6}$, which will amplify errors by $10^6$.
 
 Let's look our main example in python by using `numpy.linalg.cond`. 
@@ -1132,9 +1132,9 @@ in the matrix equation
 and we were trying to find a vector $\tilde{\beta}$ which gave a best possible solution. This would give us a line $y = \beta_0 + \beta_1x$ which best approximates the data. To fit a polynomial $y = \beta_0 + \beta_1x + \beta_2x^2 + \cdots + \beta_d^dx^d$ to the data, we have a similar set up.
 
 > **Definition**. The **Vandermonde matrix** is the $n \times (d+1)$ matrix
-> ```math
-> V = \begin{bmatrix} 1 & x_1 & x_1^2 & \cdots & x_1^d \\ 1 & x_2 & x_2^2 & \cdots & x_2^d \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_n & x_n^2 & \cdots & x_n^d \end{bmatrix}.
-> ```
+```math
+V = \begin{bmatrix} 1 & x_1 & x_1^2 & \cdots & x_1^d \\ 1 & x_2 & x_2^2 & \cdots & x_2^d \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_n & x_n^2 & \cdots & x_n^d \end{bmatrix}.
+```
 
 With the Vandermonde matrix, to find a polynomial function of best fit, one just needs to find a least-squares solution to the matrix equation
 ```math
@@ -1166,13 +1166,13 @@ Solving these problems can be done with python. One can use `numpy.polyfit` and 
 > | 4 | 2000 | 620 |
 >
 > Our Vandermonde matrix will be
-> ```math
-> V = \begin{bmatrix} 1 & 1600 & 1600^2 & 1600^3 \\ 1 & 2100 & 2100^2 & 2100^3 \\ 1 & 1550 & 1550^2 & 1550^3 \\ 1 & 1600 & 1600^2 & 1600^3 \\ 1 & 2000 & 2000^2 & 2000^3 \end{bmatrix}
-> ```
+```math
+V = \begin{bmatrix} 1 & 1600 & 1600^2 & 1600^3 \\ 1 & 2100 & 2100^2 & 2100^3 \\ 1 & 1550 & 1550^2 & 1550^3 \\ 1 & 1600 & 1600^2 & 1600^3 \\ 1 & 2000 & 2000^2 & 2000^3 \end{bmatrix}
+```
 > and our target vector will be
-> ```math
-> y = \begin{bmatrix} 500 \\ 650 \\ 475 \\ 490 \\ 620 \end{bmatrix}.
-> ```
+```math
+y = \begin{bmatrix} 500 \\ 650 \\ 475 \\ 490 \\ 620 \end{bmatrix}.
+```
 > As we can see, the entries of the Vandermonde matrix get very very large very fast. One can, if they are so inclined, compute a least-squares solution to $V\tilde{\beta} = y$ by hand. Let's not, but let us find, using python, a "best" cubic approximation of the relationship between the square footage and price.
 
 We will use `numpy.polyfit`, `numpy.pold1d` and `numpy.linspace`.
@@ -1261,9 +1261,9 @@ Principal Component Analysis (PCA) addresses the issues of multicollinearity and
 > | 4 | 2000 | 185 | 4 | 620 |
 > 
 > In this case, our associated matrix is:
-> ```math
-> X = \begin{bmatrix} 1600 & 148 & 3 & 500 \\ 2100 & 195 & 4 & 650 \\ 1550 & 144 & 2 & 475 \\ 1600 & 148 & 3 & 490 \\ 2000 & 185  & 4 & 620 \end{bmatrix}
-> ```
+```math
+X = \begin{bmatrix} 1600 & 148 & 3 & 500 \\ 2100 & 195 & 4 & 650 \\ 1550 & 144 & 2 & 475 \\ 1600 & 148 & 3 & 490 \\ 2000 & 185  & 4 & 620 \end{bmatrix}
+```
 
 There are a few problems with the above data and the associated matrix $X$ (this time, we're not looking to make predictions, so we don't omit the last column).
 - **Redundancy**: Square feet and square meters give the same information. It's just a matter of if you're from a civilized country or from an uncivilized country.
@@ -1348,27 +1348,27 @@ In what sense is this a good approximation though? Recall that the Frobenius nor
 The Frobenius norm acts as a very nice generalization of the $L^2$ norm for vectors, and is an indispensable tool in both linear algebra and data science. The point is that this "approximation" above actually works in the Frobenius norm, and this reduced singular value decomposition in fact minimizes the error.
 
 > **Theorem** (Eckart–Young–Mirsky). Let $A$ be an $n \times p$ matrix of rank $r$. For $k \leq r$,
-> ```math
-> \min_{B \text{ such that rank}(B) \leq k} \|A - B\|_F = \|A - A_k\|_F.
-> ```
+```math
+\min_{B \text{ such that rank}(B) \leq k} \|A - B\|_F = \|A - A_k\|_F.
+```
 > The (at most) rank $k$ matrix $A_k$ also realizes the minimum when optimizing for the operator norm.
 
 > **Example**. Recall that we have the following SVD:
-> ```math
-> \begin{bmatrix} 3 & 2 & 2 \\ 2 & 3 & -2 \end{bmatrix} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix} \begin{bmatrix} 5 & 0 & 0 \\ 0 & 3 & 0 \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}^T.
-> ```
+```math
+\begin{bmatrix} 3 & 2 & 2 \\ 2 & 3 & -2 \end{bmatrix} = \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \end{bmatrix} \begin{bmatrix} 5 & 0 & 0 \\ 0 & 3 & 0 \end{bmatrix} \begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}} & -\frac{2}{3} \\ \frac{1}{\sqrt{2}} & -\frac{1}{3\sqrt{2}} & \frac{2}{3} \\ 0 & \frac{4}{3\sqrt{2}} & \frac{1}{3} \end{bmatrix}^T.
+```
 > So if we want a rank-one approximation for the matrix, we'll do the reduced SVD. We have
-> ```math
-> \begin{split} A_1 &= \sigma_1u_1v_1^T \\ &= 5\begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \end{bmatrix} \\ &= \begin{bmatrix} \frac{5}{2} & \frac{5}{2} & 0 \\ \frac{5}{2} & \frac{5}{2} & 0 \end{bmatrix} \end{split}
-> ```
+```math
+\begin{split} A_1 &= \sigma_1u_1v_1^T \\ &= 5\begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0 \end{bmatrix} \\ &= \begin{bmatrix} \frac{5}{2} & \frac{5}{2} & 0 \\ \frac{5}{2} & \frac{5}{2} & 0 \end{bmatrix} \end{split}
+```
 > Now let's compute the (square of the) Frobenius norm of the difference $A - A_1$. We have
-> ```math
-> \begin{split} \|A - A_1\|_F^2 &= \left\| \begin{bmatrix} \frac{1}{2} & -\frac{1}{2} & 2 \\ -\frac{1}{2} & \frac{1}{2} & -2 \end{bmatrix}\right\|_F^2 \\ &= 4(\frac{1}{2})^2 + 2(2^2) = 9. \end{split}
-> ```
+```math
+\begin{split} \|A - A_1\|_F^2 &= \left\| \begin{bmatrix} \frac{1}{2} & -\frac{1}{2} & 2 \\ -\frac{1}{2} & \frac{1}{2} & -2 \end{bmatrix}\right\|_F^2 \\ &= 4(\frac{1}{2})^2 + 2(2^2) = 9. \end{split}
+```
 > So the Frobenius distance between $A$ and $A_1$ is 3, and we know by Eckart-Young-Mirsky that this is the smallest we can get when looking at the difference between $A$ and a (at most) rank one $2 \times 3$ matrix.  As mentioned, the operator norm $\|A - A_1\|$ also minimizes the distance (in operator norm). We know this to be the largest singular value. As $A - A_1$ has SVD
-> ```math
-> \begin{bmatrix} \frac{1}{2} & -\frac{1}{2} & 2 \\ -\frac{1}{2} & \frac{1}{2} & -2 \end{bmatrix} = \begin{bmatrix} -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 3 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} -\frac{1}{3\sqrt{2}} & -\frac{4}{\sqrt{17}} & \frac{1}{3\sqrt{34}} \\ \frac{1}{3\sqrt{2}} & 0 & \frac{1}{3}\sqrt{\frac{17}{2}} \\ -\frac{2\sqrt{2}}{3} & \frac{1}{\sqrt{17}} & \frac{2}{3}\sqrt{\frac{2}{17}} \end{bmatrix},
-> ```
+```math
+\begin{bmatrix} \frac{1}{2} & -\frac{1}{2} & 2 \\ -\frac{1}{2} & \frac{1}{2} & -2 \end{bmatrix} = \begin{bmatrix} -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{bmatrix}\begin{bmatrix} 3 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} -\frac{1}{3\sqrt{2}} & -\frac{4}{\sqrt{17}} & \frac{1}{3\sqrt{34}} \\ \frac{1}{3\sqrt{2}} & 0 & \frac{1}{3}\sqrt{\frac{17}{2}} \\ -\frac{2\sqrt{2}}{3} & \frac{1}{\sqrt{17}} & \frac{2}{3}\sqrt{\frac{2}{17}} \end{bmatrix},
+```
 > the operator norm is also 3. 
 
 Now let's do this in python. We'll set up our matrix as usual, take the SVD, do the truncated construction of $A_1$, and use `numpy.linalg.norm` to look at the norms. 
@@ -1423,9 +1423,9 @@ Then
 will be centered data matrix.
 
 > **Example**. Going back to our housing example, the means of the columns are 1770, 164, 3.2, and 547, respectively. So our centered matrix is
-> ```math
-> \hat{X} = \begin{bmatrix} -170 & -16 & -0.2 & -47 \\ 330 & 31 & 0.8 & 103  \\ -220 & -20 & -1.2 & -72 \\ -170 & -16 & -0.2 & -57  \\ 230 & 21 & 0.8 & 73 \end{bmatrix}.
-> ```
+```math
+\hat{X} = \begin{bmatrix} -170 & -16 & -0.2 & -47 \\ 330 & 31 & 0.8 & 103  \\ -220 & -20 & -1.2 & -72 \\ -170 & -16 & -0.2 & -57  \\ 230 & 21 & 0.8 & 73 \end{bmatrix}.
+```
 
 Let's do this in python.
 
