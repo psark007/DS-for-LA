@@ -2019,11 +2019,11 @@ plt.show()
 - pandas.DataFrame.plot: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html (Make plots of Series or DataFrame.)
 
 ### Pillow
-- PIL basics: https://pillow.readthedocs.io/en/stable/
+- PIL basis: https://pillow.readthedocs.io/en/stable/
 - PIL.Image: https://pillow.readthedocs.io/en/stable/reference/Image.html
 
 ### Math
-- Math basics:  https://docs.python.org/3/library/math.html
+- Math basis:  https://docs.python.org/3/library/math.html
 - math.ceil: https://docs.python.org/3/library/math.html#math.ceil (Return the ceiling of x, the smallest integer greater than or equal to x)
 
 
