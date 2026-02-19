@@ -85,7 +85,7 @@ The answer of course boils down to linear algebra, and we will begin by translat
 | Prediction Error / Residuals | A residual vector $e \in \mathbb{R}^{n \times 1}$ | Difference between actual targets and predictions. |
 | Training / "best fit" | Optimization: minimizing the norm of the residual vector | To find the "best" model by finding a model which makes the norm of the residual vector as small as possible. |
 
-So our matrix $X$ will represent our data set, our vector $y$ is the target, and $\beta$ is our vector of parameters. We will often be interested in understanding data with "intercepts", i.e., when there is a base value given in our data. So we will augment a column of 1's (denoted by $\mathbb 1$) to $X$ and append a parameter $\beta_0$ to the top of $\beta$, yielding
+So our matrix $X$ will represent our data set, our vector $y$ is the target, and $\beta$ is our vector of parameters. We will often be interested in understanding data with "intercepts", i.e., when there is a base value given in our data. So we will augment a column of 1's (denoted by $\mathbb{1}$) to $X$ and append a parameter $\beta_0$ to the top of $\beta$, yielding
 
 $$ \tilde{X} = \begin{bmatrix} \mathbb{1} & X \end{bmatrix} \text{ and } \tilde{\beta} = \begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \\ \vdots \\ \beta_p \end{bmatrix}. $$
 
@@ -131,7 +131,7 @@ So a least-squares solution to the equation $Ax = b$ is trying to find a vector 
 $$ \text{Col}(A) = \{Ax \mid x \in \mathbb{R}^n\}  $$
 of $A$. We know this to be the projection of the vector $b$ onto the column space. 
 
-![projection_of_vector_onto_plane.png](./figures/projection_of_vector_onto_plane.png))
+![projection_of_vector_onto_plane.png](./figures/projection_of_vector_onto_plane.png)
 
 > **Theorem**: The set of least-squares solutions of $Ax = b$ coincides with solutions of the **normal equations** $A^TAx = A^Tb$. Moreover, the normal equations always have a solution.
 
@@ -357,7 +357,7 @@ df.plot(
 plt.show()
 ```
 
-![bedrooms_vs_square_footage.png](./figures/bedrooms_vs_square_footage.png))
+![bedrooms_vs_square_footage.png](./figures/bedrooms_vs_square_footage.png)
 
 Of course, these figures are somewhat meaningless due to how unpopulated our data is.
 
