@@ -140,13 +140,21 @@ Let us first see why we get a line of best fit.
 > **Example**. Let us show why this describes a line of best fit when we are working with one feature and one target. Suppose that we observe four data points
 > $$ X = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} \text{ and } y =  \begin{bmatrix} 1 \\ 2\\ 2 \\ 4 \end{bmatrix}. $$
 > We want to fit a line $y = \beta_0 + \beta_1x$ to these data points. We will have our augmented matrix be
-> $$ \tilde{X} = \begin{bmatrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \\ 1 & 4 \end{bmatrix}, $$
+> $$
+> \tilde{X} = \begin{bmatrix} 1 & 1 \\ 1 & 2 \\ 1 & 3 \\ 1 & 4 \end{bmatrix},
+> $$
 > and our parameter be
-> $$ \tilde{\beta} = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}. $$
+> $$
+> \tilde{\beta} = \begin{bmatrix} \beta_0 \\ \beta_1 \end{bmatrix}.
+> $$
 > We have that
-> $$ \tilde{X}^T\tilde{X} = \begin{bmatrix} 4 & 10 \\ 10 & 30 \end{bmatrix} \text{ and } \tilde{X}^Ty = \begin{bmatrix} 9 \\ 27 \end{bmatrix}. $$
+> $$
+> \tilde{X}^T\tilde{X} = \begin{bmatrix} 4 & 10 \\ 10 & 30 \end{bmatrix} \text{ and } \tilde{X}^Ty = \begin{bmatrix} 9 \\ 27 \end{bmatrix}.
+> $$
 > The 2x2 matrix $\tilde{X}^T\tilde{X}$ is easy to invert, and so we get that
-> $$ \tilde{\beta} = (\tilde{X}^T\tilde{X})^{-1}\tilde{X}^Ty = \frac{1}{10}\begin{bmatrix} 15 & -5 \\ -5 & 2 \end{bmatrix}\begin{bmatrix} 9 \\ 27 \end{bmatrix} = \begin{bmatrix} 0 \\ \frac{9}{10} \end{bmatrix}. $$
+> $$
+> \tilde{\beta} = (\tilde{X}^T\tilde{X})^{-1}\tilde{X}^Ty = \frac{1}{10}\begin{bmatrix} 15 & -5 \\ -5 & 2 \end{bmatrix}\begin{bmatrix} 9 \\ 27 \end{bmatrix} = \begin{bmatrix} 0 \\ \frac{9}{10} \end{bmatrix}.
+> $$
 > So our line of best fit is of them form $y = \frac{9}{10}x$.
 
 Although the above system was small and we could solve the system of equations explicitly, this isn't always feasible. We will generally use python in order to solve large systems. 
