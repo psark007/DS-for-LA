@@ -1,6 +1,6 @@
-# Data Science for the Linear Algebraist. 
-
 The LaTeX does not seem to render properly on GitLab. This repo is mirrored on my gitea server here <a href="https://git.pawelsarkowicz.xyz/ps/DS-for-LA">here</a>, where the LaTeX seems to render properly. 
+
+# Data Science for the Linear Algebraist. 
  
 ## Project Overview
 A not-so comprehensive guide bridging linear algebra theory with practical data science implementation. Meant for someone to learn data science by using their strong linear algebra background. 
