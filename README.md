@@ -4,9 +4,9 @@ A practical, linear-algebra-first introduction to data science.
 
 This repository demonstrates how core linear algebra concepts -- least squares, matrix decompositions, and spectral methods -- directly power modern data science and machine learning workflows. We finish off with a mini-project involving image denoising using the truncated SVD.
 
-Rather than treating data science as a collection of tools, this project builds everything from first principles and connects theory to implementation through jupyter notebooks. 
+Rather than treating data science as a collection of tools, this project builds everything from first principles and connects theory to implementation through Jupyter notebooks. 
 
-The compiled notebooks in this project can be viewed as a single webpage on my [website](https://pawelsarkowicz.xyz/posts/ds_for_la). Note that if you view in the notebooks in Gitlab/Github, they have a tendency to not render the latex properly. 
+The compiled notebooks in this project can be viewed as a single webpage on my [website](https://pawelsarkowicz.xyz/posts/ds_for_la). Note that if you view the notebooks in GitLab/GitHub, they have a tendency to not render the LaTeX properly. 
 
 
 ## Structure
@@ -31,6 +31,7 @@ Each notebook is self-contained and moves from theory to implementation to visua
 * **Matplotlib** -- visualization
 * **Pillow** -- imaging library
 * **scikit-learn** -- machine learning utilities
+* **scikit-image** -- image quality metrics
 
 ## How to Run
 
@@ -38,7 +39,7 @@ Each notebook is self-contained and moves from theory to implementation to visua
 git clone https://gitlab.com/psark/ds-for-la.git
 cd ds-for-la
 
-pip install requirements.txt
+pip install -r requirements.txt
 
 jupyter notebook
 ```
@@ -137,7 +138,7 @@ For color images, this is applied independently to each channel (R, G, B).
 
 * Regularization connects directly to linear algebra:
   * Ridge shifts singular values, improving condition number
-  * Lasso exploits $L^1$ geometry to product sparse solutions
+  * Lasso exploits $L^1$ geometry to produce sparse solutions
 
 * Gradient descent convergence is governed by singular value structure
   * Condition number determines learning rate stability
