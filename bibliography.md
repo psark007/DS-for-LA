@@ -30,7 +30,7 @@
 - numpy.shape: https://numpy.org/doc/stable/reference/generated/numpy.shape.html (Return the shape of an array.)
 - numpy.polyfit: https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html (Least squares polynomial fit.)
 - numpy.mean: https://numpy.org/doc/stable/reference/generated/numpy.mean.html (Compute the arithmetic mean along the specified axis.)
-- numyp.poly1d: https://numpy.org/doc/stable/reference/generated/numpy.poly1d.html (A one-dimensional polynomial class.)
+- numpy.poly1d: https://numpy.org/doc/stable/reference/generated/numpy.poly1d.html (A one-dimensional polynomial class.)
 - numpy.set_printoptions: https://numpy.org/doc/stable/reference/generated/numpy.set_printoptions.html (These options determine the way floating point numbers, arrays and other NumPy objects are displayed.)
 - numpy.finfo: https://numpy.org/doc/stable/reference/generated/numpy.finfo.html (Machine limits for floating point types.)
 - numpy.logspace: https://numpy.org/doc/stable/reference/generated/numpy.logspace.html (Return numbers spaced evenly on a log scale.)
@@ -53,7 +53,7 @@
 - numpy.random.uniform: https://numpy.org/doc/stable/reference/random/generated/numpy.random.uniform.html (Draw samples from a uniform distribution.)
 
 #### numpy.linalg (https://numpy.org/doc/stable/reference/routines.linalg.html)
-- numpy.linalg.qr: https://numpy.org/doc/stable/reference/generated/numpy.linalg.qr.html (Compute the qr factorization of a matrix.
+- numpy.linalg.qr: https://numpy.org/doc/stable/reference/generated/numpy.linalg.qr.html (Compute the qr factorization of a matrix.)
 - numpy.linalg.svd: https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html (Singular Value Decomposition.)
 - numpy.linalg.solve: https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html (Solve a linear matrix equation, or system of linear scalar equations.)
 - numpy.linalg.lstsq: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html (Return the least-squares solution to a linear matrix equation.)
@@ -139,7 +139,7 @@
 - sklearn.model_selection.cross_val_score: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html (Evaluate a score by cross-validation.)
 - sklearn.model_selection.KFold: https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html (K-Fold cross-validator.)
 
-#### sklearn.metrices
+#### sklearn.metrics
 - sklearn.metrics.mean_squared_error: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html (Mean squared error regression loss.)
 - sklearn.metrics.r2_score: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html (R^2 (coefficient of determination) regression score function.)
 
